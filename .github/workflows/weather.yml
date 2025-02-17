@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      CITY: "São Paulo"  # Defina a cidade aqui
+      CITY: "Rio de Janeiro"  # Defina a cidade aqui
 
     steps:
       - name: Checkout do código
