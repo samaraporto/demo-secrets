@@ -2,7 +2,7 @@ import os
 import requests
 #pega a chave da api do GitHub Secrets
 API_KEY = os.getenv("API_KEY")
-CITY = os.getenv("CITY", "São Paulo") #variavel definida no arquivo de workflow (.yml)
+CITY = os.getenv("CITY", "São Paulo") #variavel definida no arquivo de workflow (weather.yml)
 
 if not API_KEY:
     print("Erro: API_KEY não encontrada! Defina um secret no GitHub.")
