@@ -3,9 +3,7 @@ name: Weather Check
 on: 
   push:
     branches:
-      - main
-  schedule:
-    - cron: "0 12 * * *"  # Executa todo dia às 12h UTC
+      - main  # Roda só quando você fizer push na branch main
 
 jobs:
   check_weather:
