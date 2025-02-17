@@ -9,8 +9,8 @@ jobs:
   check_weather:
     runs-on: ubuntu-latest
 
-    env:
-      CITY: "Rio de Janeiro"  # Defina a cidade aqui
+    #env:
+      #CITY: "Rio de Janeiro"  # Defina a cidade aqui
 
     steps:
       - name: Checkout do código
