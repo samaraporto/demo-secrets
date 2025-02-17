@@ -8,22 +8,23 @@ on:
 jobs:
   check_day:
     runs-on: ubuntu-latest
-    env:
-      WEEKDAY: $(date +%u)  # Obtém o número do dia da semana (1 = segunda, ..., 7 = domingo)
 
     steps:
       - name: Exibir mensagem inicial
         run: echo "Verificando o dia da semana..."
 
+      - name: Definir variável WEEKDAY
+        run: echo "WEEKDAY=$(date +%u)" >> $GITHUB_ENV
+
       - name: Exibir o dia atual
         run: echo "Hoje é o dia número $WEEKDAY da semana"
 
       - name: Dia útil - Mostrar mensagem secreta
-        if: env.WEEKDAY >= 1 && env.WEEKDAY <= 5
+        if: ${{ env.WEEKDAY >= 1 && env.WEEKDAY <= 5 }}
         env:
           SECRET_WORK_MESSAGE: ${{ secrets.WORK_MESSAGE }}
         run: echo "Hoje é um dia útil! Mensagem secreta: $SECRET_WORK_MESSAGE"
 
       - name: Fim de semana - Exibir mensagem pública
-        if: env.WEEKDAY == 6 || env.WEEKDAY == 7
+        if: ${{ env.WEEKDAY == 6 || env.WEEKDAY == 7 }}
         run: echo "Hoje é fim de semana! Aproveite para descansar! 🎉"
