@@ -1,0 +1,32 @@
+name: Weather Check
+
+on: 
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 12 * * *"  # Executa todo dia às 12h UTC
+
+jobs:
+  check_weather:
+    runs-on: ubuntu-latest
+
+    env:
+      CITY: "São Paulo"  # Defina a cidade aqui
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Instalar dependências
+        run: pip install requests
+
+      - name: Executar script de previsão do tempo
+        env:
+          API_KEY: ${{ secrets.API_KEY }}  # Secret do GitHub
+        run: python weather.py
